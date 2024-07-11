@@ -1,0 +1,8 @@
+# As god is my witness, LLDB will one day have clear as a command by default.
+
+# Why-isn't-this-already-a-command Commands
+command alias clear platform shell clear
+
+# Build Commands
+command alias make platform shell make
+command alias scons platform shell scons

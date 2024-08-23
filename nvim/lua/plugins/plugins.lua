@@ -1,4 +1,4 @@
-return { 
+return {
 
     { 'duane9/nvim-rg' },
 
@@ -11,9 +11,19 @@ return {
         end,
     },
 
-    { 
-        'folke/todo-comments.nvim', 
+    {
+        'folke/todo-comments.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
+    },
+
+    {
+        'johnfrankmorgan/whitespace.nvim',
+        opts = {
+            highlight = 'DiffDelete',
+            ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help', 'dashboard' },
+            ignore_terminal = true,
+            return_cursor = true,
+        },
     },
 
     -- telescope
@@ -38,20 +48,20 @@ return {
             telescope.load_extension('live_grep_args')
         end
     },
-    
+
     { 'nvim-lua/plenary.nvim', dependencies = { 'nvim-telescope/telescope.nvim' } },
-    
+
     { 'nvim-telescope/telescope-live-grep-args.nvim', dependencies = { 'nvim-telescope/telescope.nvim' } },
-    
-    { 
-        'nvim-telescope/telescope-fzf-native.nvim', 
+
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
         dependencies = { 'nvim-telescope/telescope.nvim' },
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' ,
     },
-    
+
     -- treesitter
 
-    { 
+    {
         'nvim-treesitter/nvim-treesitter',
         lazy = false,
         config = function()
@@ -77,10 +87,10 @@ return {
 
     -- ms-jpq plugins
 
-    { 
+    {
         'ms-jpq/coq_nvim',
         keys = {
-            { '<leader>coq', '<cmd>COQnow<cr><cr><cr>' },
+            { '<leader>coq', '<cmd>COQnow<cr>' },
         },
     },
 
@@ -89,9 +99,6 @@ return {
         keys = {
             { '<leader>n', '<cmd>CHADopen<cr>' },
         },
-        config = function()
-            -- todo disable git
-        end,
     },
 
 }

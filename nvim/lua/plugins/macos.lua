@@ -1,5 +1,5 @@
 return {
-    -- follow system them
+    -- follow system theme
     {
         "cormacrelf/dark-notify",
         lazy = false,

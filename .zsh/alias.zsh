@@ -1,0 +1,8 @@
+alias tree="tree -a --filesfirst"
+alias picocom="picocom --quiet"
+alias yosys="yosys -Q -T"
+alias rm="rm -r"
+alias py="python3"
+alias ipy="ipython3"
+alias venv="source .venv/bin/activate"
+alias sz="ls -lah"

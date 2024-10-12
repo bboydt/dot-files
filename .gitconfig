@@ -1,0 +1,39 @@
+[user]
+    email = b@boydt.org
+    name = Boyd Thomas
+
+[alias]
+    changes = status -su
+    ls = log --oneline
+
+[checkout]
+    workers = 8
+
+[color]
+    ui = auto
+
+[commit]
+    gpgsign = true
+    verbose = true
+
+[core]
+    editor = nvim
+
+[init]
+    defaultBranch = master
+
+[merge]
+    ff = false
+
+[pager]
+    branch = false
+
+[pull]
+    ff = true
+    rebase = false
+
+[push]
+	autoSetupRemote = true
+
+[submodule]
+	recurse = true

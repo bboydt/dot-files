@@ -7,7 +7,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd([[colorscheme tokyonight]])
+            vim.cmd([[colorscheme tokyonight-night]])
         end,
     },
 
@@ -20,10 +20,52 @@ return {
         'johnfrankmorgan/whitespace.nvim',
         opts = {
             highlight = 'DiffDelete',
-            ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help', 'dashboard' },
+            ignored_filetypes = { 'TelescopePrompt', 'Trouble', 'help', 'dashboard', 'neo-tree' },
             ignore_terminal = true,
             return_cursor = true,
         },
+    },
+
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        keys = {
+            { '<leader>n', '<cmd>Neotree<cr>' },
+        },
+        opts = {
+            default_component_configs = {
+                git_status = {
+                    symbols = {
+                        -- Change type
+                        added     = "+",
+                        deleted   = "X",
+                        modified  = "*",
+                        renamed   = "R",
+                        -- Status type
+                        untracked = "?",
+                        ignored   = ";",
+                        unstaged  = "!",
+                        staged    = "",
+                        conflict  = "m",
+                    }
+                }
+            }
+        }
+    },
+
+    {
+        's1n7ax/nvim-window-picker',
+        name = 'window-picker',
+        event = 'VeryLazy',
+        version = '2.*',
+        config = function()
+            require'window-picker'.setup()
+        end,
     },
 
     -- telescope
@@ -64,6 +106,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         lazy = false,
+        version = "v0.23.0",
         config = function()
             local treesitter = require('nvim-treesitter.configs')
             treesitter.setup({
@@ -83,22 +126,6 @@ return {
                 },
             })
         end,
-    },
-
-    -- ms-jpq plugins
-
-    {
-        'ms-jpq/coq_nvim',
-        keys = {
-            { '<leader>coq', '<cmd>COQnow<cr>' },
-        },
-    },
-
-    {
-        'ms-jpq/chadtree',
-        keys = {
-            { '<leader>n', '<cmd>CHADopen<cr>' },
-        },
     },
 
 }

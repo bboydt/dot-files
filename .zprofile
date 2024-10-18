@@ -1,4 +1,7 @@
-# fixes odd behavior with navigation keys
-bindkey -e
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
+for file in $HOME/.profile.d/*.sh; do
+    if [[ -f "$file" ]]; then
+        source "$file"
+    fi
+done
+
+export PATH=$HOME/.local/bin:$PATH

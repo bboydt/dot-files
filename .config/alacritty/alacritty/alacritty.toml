@@ -1,0 +1,22 @@
+[general]
+import = [
+  "~/.config/alacritty/tokyonight-night.toml"
+  # "~/.config/alacritty/tokyonight-day.toml"
+]
+
+[window]
+
+[keyboard]
+bindings = [
+    { key = "Left", mods = "Alt", chars = "\u001bb" },
+    { key = "Right", mods = "Alt", chars = "\u001bf" },
+    { key = "Left", mods = "Control", chars = "\u001bb" },
+    { key = "Right", mods = "Control", chars = "\u001bf" },
+]
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[font]
+normal = { family = "Berkeley Mono", style = "Regular" }
+size = 14

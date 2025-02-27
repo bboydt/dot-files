@@ -1,9 +1,10 @@
 -- Plugins
 require "paq" {
-    "savq/paq-nvim",
     "folke/tokyonight.nvim",
+    "lukas-reineke/virt-column.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
+    "savq/paq-nvim",
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 }
 
@@ -21,6 +22,13 @@ vim.keymap.set("n", ",x", "<cmd>nohl<cr>")
 vim.keymap.set("n", "<C-c>", "<cmd>norm gcc<cr>")
 vim.keymap.set("v", "<C-c>", "<cmd>norm gcc<cr>")
 vim.keymap.set("v", "<C-c>", "gc", { remap = true })
+
+vim.keymap.set("n", "\t", "<cmd>tabnext<cr>")
+vim.keymap.set("n", "<S-\t>", "<cmd>tabprev<cr>")
+vim.keymap.set("n", "=", "<cmd>tabnext<cr>")
+vim.keymap.set("n", "-", "<cmd>tabprev<cr>")
+vim.keymap.set("n", "<leader>t", "<cmd>tabnew<cr>")
+vim.keymap.set("n", "<C-q>", "<cmd>tabclose<cr>")
 
 vim.keymap.set("n", "<leader>W", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "<leader>A", "<cmd>split<cr>")
@@ -42,6 +50,27 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.number = false
 vim.opt.background = "dark"
+
+-- Cursor Line Highlight
+local augroup = vim.api.nvim_create_augroup(
+    "HighlightCurrentLine",
+    { clear = true }
+)
+
+vim.api.nvim_create_autocmd("WinEnter", {
+    group = augroup,
+    callback = function()
+        vim.wo.cursorline = true
+    end
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+    group = augroup,
+    callback = function()
+        vim.wo.cursorline = false
+    end
+})
+
 
 -- File Types
 vim.filetype.add({
@@ -73,3 +102,21 @@ require "nvim-treesitter.configs".setup {
         enable = true,
     },
 }
+
+-- Virt column
+require "virt-column".setup()
+require "virt-column".update {
+    enabled = true,
+    char = ":",
+    virtcolumn = "81",
+    highlight = "Whitespace",
+}
+
+-- Trailing Whitespace
+vim.opt.listchars = {
+    trail = "·",
+    tab = "--",
+}
+vim.opt.list = true
+vim.cmd([[match TrailingWhitespace /\s\+$/]])
+vim.api.nvim_set_hl(0, "TrailingWhitespace", { fg = "#542931" })
